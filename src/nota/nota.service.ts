@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
@@ -17,6 +18,19 @@ export class NotaService {
   }
 
   obtenerTitulo(titulo: string) {
+    //buscar un elemento especifico
     return this.notaModel.find({ titulo: titulo });
+  }
+  borrar(titulo: string) {
+    //elimina un elemento
+    return this.notaModel.findOneAndDelete({ titulo: titulo });
+  }
+
+  actualizar(titulo: string, nuevoTitulo: any) {
+    return this.notaModel.findOneAndUpdate(
+      { titulo: titulo },
+      { titulo: nuevoTitulo.titulo },
+      { new: true },
+    );
   }
 }

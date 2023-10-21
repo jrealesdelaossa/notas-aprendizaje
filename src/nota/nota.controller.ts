@@ -1,4 +1,13 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+/* eslint-disable prettier/prettier */
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { NotaService } from './nota.service';
 
 @Controller('nota')
@@ -12,7 +21,7 @@ export class NotaController {
 
   @Get('obtener')
   obtenerNotas() {
-    this.notaService.obtenerNotas();
+    return this.notaService.obtenerNotas();
   }
 
   /**
@@ -22,6 +31,17 @@ export class NotaController {
    */
   @Get('obtener-titulo/:titulo')
   obtenerTitulo(@Param('titulo') titulo: string) {
-    this.notaService.obtenerTitulo(titulo);
+    //ruta para buscar por titulo -> obtener-titulo/titulo a buscar
+    return this.notaService.obtenerTitulo(titulo);
+  }
+
+  @Delete('borrar-Elemento/:titulo')
+  borrar(@Param('titulo') titulo: string) {
+    return this.notaService.borrar(titulo);
+  }
+
+  @Put('actualizar/:titulo')
+  actualizar(@Param('titulo') titulo: string, @Body() nuevoTitulo: any) {
+    return this.notaService.actualizar(titulo, nuevoTitulo);
   }
 }
