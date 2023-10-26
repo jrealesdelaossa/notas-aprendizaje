@@ -35,13 +35,13 @@ export class NotaController {
     return this.notaService.obtenerTitulo(titulo);
   }
 
-  @Delete('borrar-Elemento/:titulo')
-  borrar(@Param('titulo') titulo: string) {
-    return this.notaService.borrar(titulo);
+  @Delete('borrar-Elemento/:_id')
+  borrar(@Param('_id') id: string ) {
+    return this.notaService.borrar(id);
   }
 
-  @Put('actualizar/:titulo')
-  actualizar(@Param('titulo') titulo: string, @Body() nuevoTitulo: any) {
-    return this.notaService.actualizar(titulo, nuevoTitulo);
+  @Put('actualizar/:_id')
+  actualizar(@Param('_id') id: string, @Body() nuevoTitulo: any) {
+    return this.notaService.actualizar(id, nuevoTitulo );
   }
 }

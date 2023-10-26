@@ -19,18 +19,22 @@ export class NotaService {
 
   obtenerTitulo(titulo: string) {
     //buscar un elemento especifico
-    return this.notaModel.find({ titulo: titulo });
-  }
-  borrar(titulo: string) {
-    //elimina un elemento
-    return this.notaModel.findOneAndDelete({ titulo: titulo });
+    return this.notaModel.find(
+
+      {  titulo: titulo }
+    );
   }
 
-  actualizar(titulo: string, nuevoTitulo: any) {
+  borrar(id: string) {
+    //elimina un elemento por id
+    return this.notaModel.findByIdAndDelete({ _id: id });
+  }
+
+  actualizar(id: string, nuevoTitulo: any) {
     return this.notaModel.findOneAndUpdate(
-      { titulo: titulo },
+      { _id: id },
       { titulo: nuevoTitulo.titulo },
-      { new: true },
+      { new: true}
     );
   }
 }
