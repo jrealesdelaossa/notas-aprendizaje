@@ -15,8 +15,8 @@ export class NotaController {
   constructor(private readonly notaService: NotaService) {}
 
   @Post('crear')
-  crearNota(@Body() nota: any) {
-    return this.notaService.crearNota(nota);
+  crearNota(@Body() nota: any, usuario: any) {
+    return this.notaService.crearNota(nota,usuario);
   }
 
   @Get('obtener')

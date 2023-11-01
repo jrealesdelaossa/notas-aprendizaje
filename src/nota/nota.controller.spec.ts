@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Test, TestingModule } from '@nestjs/testing';
 import { NotaController } from './nota.controller';
 import { NotaService } from './nota.service';

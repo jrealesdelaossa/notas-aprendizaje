@@ -8,9 +8,10 @@ import { Nota } from './schema/nota.schema';
 export class NotaService {
   constructor(@InjectModel(Nota.name) private notaModel: Model<Nota>) {}
 
-  crearNota(nota: any) {
-    const nuevaNota = new this.notaModel(nota);
+  crearNota(nota: any , usuario: any) { 
+    const nuevaNota = new this.notaModel(nota,usuario);
     return nuevaNota.save();
+    
   }
 
   obtenerNotas() {
@@ -20,7 +21,6 @@ export class NotaService {
   obtenerTitulo(titulo: string) {
     //buscar un elemento especifico
     return this.notaModel.find(
-
       {  titulo: titulo }
     );
   }

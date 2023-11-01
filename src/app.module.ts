@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { NotaModule } from './nota/nota.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { UsuarioModule } from './usuario/usuario.module';
 
 @Module({
   imports: [
@@ -10,6 +11,7 @@ import { MongooseModule } from '@nestjs/mongoose';
       'mongodb://katy:noviembre@ac-rhskvkc-shard-00-00.x5aeepm.mongodb.net:27017,ac-rhskvkc-shard-00-01.x5aeepm.mongodb.net:27017,ac-rhskvkc-shard-00-02.x5aeepm.mongodb.net:27017/MiBasedeDatos?replicaSet=atlas-qpz2r5-shard-0&ssl=true&authSource=admin',
     ),
     NotaModule,
+    UsuarioModule,
   ],
   controllers: [AppController],
   providers: [AppService],
