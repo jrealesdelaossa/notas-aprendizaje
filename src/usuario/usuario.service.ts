@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Usuario } from './schema/usuario.schema';
+import { UsuarioDto } from './dto/usuario.dto/usuario.dto';
 
 @Injectable()
 export class UsuarioService {
@@ -10,7 +11,7 @@ export class UsuarioService {
     @InjectModel(Usuario.name) private usuarioModel: Model<Usuario>,
   ) {}
 
-  crearUsuario(nombre: string) {
+  crearUsuario(nombre: UsuarioDto) {
     const nuevoUsuario = new this.usuarioModel(nombre);
     return nuevoUsuario.save();
   }

@@ -9,13 +9,14 @@ import {
   Put,
 } from '@nestjs/common';
 import { NotaService } from './nota.service';
+import { NotaDto } from './dto/nota.dto/nota.dto';
 
 @Controller('nota')
 export class NotaController {
   constructor(private readonly notaService: NotaService) {}
 
   @Post('crear')
-  crearNota(@Body() nota: any, usuario: any) {
+  crearNota(@Body() nota: NotaDto, usuario: any) {
     return this.notaService.crearNota(nota,usuario);
   }
 
@@ -41,7 +42,7 @@ export class NotaController {
   }
 
   @Put('actualizar/:_id')
-  actualizar(@Param('_id') id: string, @Body() nuevoTitulo: any) {
+  actualizar(@Param('_id') id: string, @Body() nuevoTitulo: NotaDto) {
     return this.notaService.actualizar(id, nuevoTitulo );
   }
 }

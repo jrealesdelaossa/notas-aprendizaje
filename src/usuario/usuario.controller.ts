@@ -8,13 +8,14 @@ import {
   Put,
 } from '@nestjs/common';
 import { UsuarioService } from './usuario.service';
+import { UsuarioDto } from './dto/usuario.dto/usuario.dto';
 
 @Controller('usuario')
 export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}
 
   @Post('crear')
-  crearUsuario(@Body() nombre: string) {
+  crearUsuario(@Body() nombre: UsuarioDto) {
     return this.usuarioService.crearUsuario(nombre);
   }
 
