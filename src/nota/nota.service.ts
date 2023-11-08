@@ -1,10 +1,13 @@
 /* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
-import { Model } from 'mongoose';
+import { Model} from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Nota } from './schema/nota.schema';
 import { NotaDto } from './dto/nota.dto/nota.dto';
-import { config } from 'rxjs';
+import { Usuario } from 'src/usuario/schema/usuario.schema';
+
+
+
 
 @Injectable()
 export class NotaService {
@@ -44,4 +47,14 @@ export class NotaService {
       { new: true}
     );
   }
+
+  async obtener(usuario: Usuario ) {
+    return this.notaModel.find(
+      { usuario: usuario})
+      .populate('Usuario') // Traer la información del perfil
+      .exec() // Ejecutar la consulta
+  }
+
+  
+
 }

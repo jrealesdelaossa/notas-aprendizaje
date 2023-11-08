@@ -10,6 +10,8 @@ import {
 } from '@nestjs/common';
 import { NotaService } from './nota.service';
 import { NotaDto } from './dto/nota.dto/nota.dto';
+import { Usuario } from 'src/usuario/schema/usuario.schema';
+
 
 @Controller('nota')
 export class NotaController {
@@ -17,7 +19,7 @@ export class NotaController {
 
   @Post('crear')
   crearNota(@Body() nota: NotaDto, usuario: any) {
-    return this.notaService.crearNota(nota,usuario);
+    return this.notaService.crearNota(nota, usuario);
   }
 
   @Get('obtener')
@@ -37,12 +39,17 @@ export class NotaController {
   }
 
   @Delete('borrar-Elemento/:_id')
-  borrar(@Param('_id') id: string ) {
+  borrar(@Param('_id') id: string) {
     return this.notaService.borrar(id);
   }
 
   @Put('actualizar/:_id')
   actualizar(@Param('_id') id: string, @Body() nuevoTitulo: NotaDto) {
-    return this.notaService.actualizar(id, nuevoTitulo );
+    return this.notaService.actualizar(id, nuevoTitulo);
+  }
+
+  @Get(':id')
+  obtener(@Param('id') usuario: Usuario) {
+    return this.notaService.obtener(usuario);
   }
 }

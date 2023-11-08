@@ -6,6 +6,9 @@ export type UsuarioDocument = HydratedDocument<Usuario>;
 
 @Schema()
 export class Usuario {
+  static find(arg0: { nombre: { $exists: boolean; }; }) {
+    throw new Error('Method not implemented.');
+  }
   @Prop()
   nombre: string;
 }
