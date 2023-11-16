@@ -19,9 +19,16 @@ export class UsuarioService {
     return this.usuarioModel.find();
   }
 
-  borrar(id: string) {
+  async obtener(payload: any) {
+    const usuario = await this.usuarioModel.findOne({
+      nombreUsuario: payload.nombre,
+      password: payload.password,
+    });
+    return usuario;
+  }
+
+  async borrar(): Promise<any> {
     //elimina un elemento por id
-    return this.usuarioModel.findByIdAndDelete({ _id: id });
   }
 
   actualizar(id: string, nuevo: any) {
@@ -31,5 +38,8 @@ export class UsuarioService {
       { new: true },
     );
   }
+
+  eliminarTodos() {
+    return this.usuarioModel.deleteMany();
+  }
 }
- 

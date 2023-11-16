@@ -1,13 +1,12 @@
-/* eslint-disable prettier/prettier */
-import { IsMongoId, IsString } from "class-validator";
-import { ObjectId } from "mongoose";
-
+import { IsMongoId, IsString } from 'class-validator';
 
 export class NotaDto {
-    @IsString()
-    "titulo": string;
-    
-    @IsMongoId()
-    "usuario": ObjectId
+  @IsString()
+  titulo: string;
 
+  @IsString()
+  nota: string;
+
+  @IsMongoId()
+  usuario: string;
 }

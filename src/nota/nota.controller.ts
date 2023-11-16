@@ -12,19 +12,25 @@ import { NotaService } from './nota.service';
 import { NotaDto } from './dto/nota.dto/nota.dto';
 import { Usuario } from 'src/usuario/schema/usuario.schema';
 
-
 @Controller('nota')
 export class NotaController {
   constructor(private readonly notaService: NotaService) {}
 
   @Post('crear')
-  crearNota(@Body() nota: NotaDto, usuario: any) {
-    return this.notaService.crearNota(nota, usuario);
+  crearNota(@Body() nota: NotaDto) {
+    console.log(nota);
+
+    return this.notaService.crearNota(nota);
   }
 
   @Get('obtener')
   obtenerNotas() {
     return this.notaService.obtenerNotas();
+  }
+
+  @Get('obtener-por-id/:_id')
+  async obtenerPorId(@Param('_id') id: string) {
+    return await this.notaService.obtenerPorId(id);
   }
 
   /**
@@ -51,5 +57,15 @@ export class NotaController {
   @Get(':id')
   obtener(@Param('id') usuario: Usuario) {
     return this.notaService.obtener(usuario);
+  }
+
+  @Delete('eliminar/:id')
+  async eliminar(@Param('id') id: string) {
+    return await this.notaService.borrar(id);
+  }
+
+  @Delete('eliminar-todos')
+  async eliminarTodos() {
+    return await this.notaService.eliminarTodos();
   }
 }

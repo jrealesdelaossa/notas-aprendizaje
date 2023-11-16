@@ -16,6 +16,8 @@ export class UsuarioController {
 
   @Post('crear')
   crearUsuario(@Body() nombre: UsuarioDto) {
+    console.log(nombre);
+
     return this.usuarioService.crearUsuario(nombre);
   }
 
@@ -23,13 +25,32 @@ export class UsuarioController {
   buscar() {
     return this.usuarioService.buscar();
   }
-  @Delete('borrar/:_id')
-  borrar(@Param('_id') id: string) {
-    return this.usuarioService.borrar(id);
+
+  @Post('login')
+  async obtener(@Body() payload: any) {
+    console.log(payload);
+
+    return await this.usuarioService.obtener(payload);
+  }
+
+  @Delete('borrar')
+  async borrar() {
+    console.log();
+    return await this.usuarioService.borrar();
+  }
+
+  @Delete('eliminar')
+  eliminarUsuario() {
+    return null;
   }
 
   @Put('actualizar/:_id')
   actualizar(@Param('_id') id: string, @Body() nuevo: any) {
     return this.usuarioService.actualizar(id, nuevo);
+  }
+
+  @Delete('borrar-todos')
+  eliminarTodos() {
+    return this.usuarioService.eliminarTodos();
   }
 }

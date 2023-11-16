@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 
@@ -6,11 +5,23 @@ export type UsuarioDocument = HydratedDocument<Usuario>;
 
 @Schema()
 export class Usuario {
-  static find(arg0: { nombre: { $exists: boolean; }; }) {
-    throw new Error('Method not implemented.');
-  }
   @Prop()
-  nombre: string;
+  nombres: string;
+
+  @Prop()
+  apellidos: string;
+
+  @Prop()
+  nombreUsuario: string;
+
+  @Prop()
+  genero: string;
+
+  @Prop()
+  correo: string;
+
+  @Prop()
+  password: string;
 }
 
 export const UsuarioSchema = SchemaFactory.createForClass(Usuario);
