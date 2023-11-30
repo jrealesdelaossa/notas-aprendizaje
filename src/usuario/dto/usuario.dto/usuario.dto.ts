@@ -1,4 +1,5 @@
-import { IsEmail, IsString, MaxLength, MinLength } from 'class-validator';
+/* eslint-disable prettier/prettier */
+import { IsEmail, IsString, MaxLength } from 'class-validator';
 
 export class UsuarioDto {
   @MaxLength(50)
@@ -11,7 +12,6 @@ export class UsuarioDto {
 
   @IsString()
   @MaxLength(50)
-  @MinLength(10)
   nombreUsuario: string;
 
   @IsString()

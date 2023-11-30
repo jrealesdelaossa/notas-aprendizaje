@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   Body,
   Controller,
@@ -26,10 +27,9 @@ export class UsuarioController {
     return this.usuarioService.buscar();
   }
 
-  @Post('login')
+  @Get('login')
   async obtener(@Body() payload: any) {
     console.log(payload);
-
     return await this.usuarioService.obtener(payload);
   }
 

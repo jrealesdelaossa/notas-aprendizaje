@@ -20,11 +20,17 @@ export class UsuarioService {
   }
 
   async obtener(payload: any) {
-    const usuario = await this.usuarioModel.findOne({
-      nombreUsuario: payload.nombre,
-      password: payload.password,
-    });
-    return usuario;
+    try{
+      const usuario = await this.usuarioModel.findOne(
+        {
+        nombreUsuario: payload.nombreUsuario,
+        password: payload.password,
+        },
+      ).exec();
+      return usuario;
+    }catch(error){
+      console.log(error)
+    }
   }
 
   async borrar(): Promise<any> {
